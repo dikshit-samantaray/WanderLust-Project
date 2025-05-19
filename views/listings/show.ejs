@@ -134,7 +134,9 @@
             data-rating="<%= review.rating %>"
           ></p>
           <p class="card-text"><%= review.comment %></p>
+          <br />
 
+          <% if(currUser && review.author._id.equals(currUser._id)) { %>
           <form
             class="mb-3"
             method="post"
@@ -142,6 +144,7 @@
           >
             <button class="btn btn-sm btn-dark">Delete</button>
           </form>
+          <% } %>
         </div>
       </div>
       <% } %>

@@ -29,6 +29,16 @@
     margin: 0;
     font-size: 12px;
   }
+
+  #filters a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* #filters a:hover{
+    color
+  } */
+
   .tax-info {
     display: none;
   }
@@ -53,73 +63,108 @@
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25); /* Match your color */
   }
 </style>
-<div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Trending</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p>Rooms</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-chess-rook"></i></div>
-    <p>Castles</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-water-ladder"></i></div>
-    <p>Amazing pools</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-city"></i></div>
-    <p>Iconic cities</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p>Mountains</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>Camping</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-umbrella-beach"></i></div>
-    <p>Beach</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-snowflake"></i></div>
-    <p>Arctic</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-golf-ball-tee"></i></div>
-    <p>Golfing</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-sailboat"></i></div>
-    <p>Boats</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-water"></i></div>
-    <p>Lakes</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-cow"></i></div>
-    <p>Farms</p>
-  </div>
-  <div class="tax-toggle">
-    <div class="form-check-reverse form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        role="switch"
-        id="switchCheckDefault"
-      />
-      <label class="form-check-label" for="switchCheckDefault"
-        >Display total after taxes</label
-      >
+<form action="/listings" method="GET">
+  <input type="hidden" name="category" />
+  <div id="filters">
+    <a href="#">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div></a
+    >
+
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div></a
+    >
+
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-chess-rook"></i></div>
+        <p>Castles</p>
+      </div></a
+    >
+    <a href="/listings">
+      <div class="filter">
+        <div><i class="fa-solid fa-water-ladder"></i></div>
+        <p>Amazing pools</p>
+      </div></a
+    >
+    <a href="/listings">
+      <div class="filter">
+        <div><i class="fa-solid fa-city"></i></div>
+        <p>Iconic cities</p>
+      </div></a
+    >
+    <a href="/listings">
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Mountains</p>
+      </div></a
+    >
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div></a
+    >
+
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach</p>
+      </div></a
+    >
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div></a
+    >
+    <a href="/listings">
+      <div class="filter">
+        <div><i class="fa-solid fa-golf-ball-tee"></i></div>
+        <p>Golfing</p>
+      </div></a
+    >
+
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-sailboat"></i></div>
+        <p>Boats</p>
+      </div></a
+    >
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-water"></i></div>
+        <p>Lakes</p>
+      </div></a
+    >
+
+    <a href="/listings"
+      ><div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div></a
+    >
+
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="switchCheckDefault"
+        />
+        <label class="form-check-label" for="switchCheckDefault"
+          >Display total after taxes</label
+        >
+      </div>
     </div>
   </div>
-</div>
+</form>
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -157,4 +202,12 @@
       }
     }
   });
+</script>
+
+<script>
+  function submitCategory(category) {
+    const input = document.getElementById("categoryInput");
+    input.value = category;
+    document.getElementById("categoryForm").submit();
+  }
 </script>

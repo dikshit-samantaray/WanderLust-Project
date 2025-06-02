@@ -18,6 +18,8 @@ router
     validateListing,
     asyncwrap(listingController.createListing)
   );
+//Render category
+router.get("/cat/:category", listingController.renderCategory);
 
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);

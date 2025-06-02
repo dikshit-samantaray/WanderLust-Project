@@ -20,7 +20,7 @@ const categories = [
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  res.render("listings/index.ejs", { allListings, category: null });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -28,10 +28,10 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.renderCategory = async (req, res) => {
-  const { category } = req.query;
-  let listings = await Listing.find({ category });
+  const { category } = req.params;
+  const allListings = await Listing.find({ category });
 
-  res.render("listings/index.ejs", { listings });
+  res.render("listings/index.ejs", { allListings, category });
 };
 
 module.exports.createListing = async (req, res, next) => {

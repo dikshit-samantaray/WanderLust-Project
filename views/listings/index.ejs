@@ -12,14 +12,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  .filter:hover {
+  /* .filter:hover {
     opacity: 1;
     cursor: pointer;
-  }
+  } */
   .filter i {
     font-size: 18px;
     margin-bottom: 5px;
@@ -62,88 +62,156 @@
   input[type="checkbox"].form-check-input:focus {
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25); /* Match your color */
   }
+  .category-icon .filter i {
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  /* On hover */
+  .category-icon:hover .filter i {
+    opacity: 1;
+  }
+
+  /* When active (selected) */
+  .category-icon.active .filter i {
+    opacity: 1;
+    color: black !important; /* optional */
+    cursor: pointer;
+  }
+  .category-icon {
+    text-decoration: none;
+  }
+
+  .category-icon .filter {
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 3px;
+    transition: border-color 0.2s ease;
+  }
+
+  /* Hover underline */
+  .category-icon:hover .filter {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+  }
+
+  /* Active underline */
+  .category-icon.active .filter {
+    border-bottom: 3px solid rgba(0, 0, 0, 1);
+  }
 </style>
 <form action="/listings" method="GET">
   <input type="hidden" name="category" />
   <div id="filters">
-    <a href="#">
+    <a
+      href="/listings/cat/Trending"
+      class="category-icon <%= category === 'Trending' ? 'active' : '' %>"
+    >
       <div class="filter">
         <div><i class="fa-solid fa-fire"></i></div>
         <p>Trending</p>
-      </div></a
-    >
+      </div>
+    </a>
 
-    <a href="/listings"
+    <a
+      href="/listings/cat/Rooms"
+      class="category-icon <%= category === 'Rooms' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-bed"></i></div>
         <p>Rooms</p>
       </div></a
     >
 
-    <a href="/listings"
+    <a
+      href="/listings/cat/Castles"
+      class="category-icon <%= category === 'Castles' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-chess-rook"></i></div>
         <p>Castles</p>
       </div></a
     >
-    <a href="/listings">
+    <a
+      href="/listings/cat/AmazingPools"
+      class="category-icon <%= category === 'AmazingPools' ? 'active' : '' %>"
+    >
       <div class="filter">
         <div><i class="fa-solid fa-water-ladder"></i></div>
         <p>Amazing pools</p>
       </div></a
     >
-    <a href="/listings">
+    <a
+      href="/listings/cat/IconicCities"
+      class="category-icon <%= category === 'IconicCities' ? 'active' : '' %>"
+    >
       <div class="filter">
         <div><i class="fa-solid fa-city"></i></div>
         <p>Iconic cities</p>
       </div></a
     >
-    <a href="/listings">
+    <a
+      href="/listings/cat/Mountains"
+      class="category-icon <%= category === 'Mountains' ? 'active' : '' %>"
+    >
       <div class="filter">
         <div><i class="fa-solid fa-mountain-city"></i></div>
         <p>Mountains</p>
       </div></a
     >
-    <a href="/listings"
+    <a
+      href="/listings/cat/Camping"
+      class="category-icon <%= category === 'Camping' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-campground"></i></div>
         <p>Camping</p>
       </div></a
     >
 
-    <a href="/listings"
+    <a
+      href="/listings/cat/Beach"
+      class="category-icon <%= category === 'Beach' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-umbrella-beach"></i></div>
         <p>Beach</p>
       </div></a
     >
-    <a href="/listings"
+    <a
+      href="/listings/cat/Arctic"
+      class="category-icon <%= category === 'Arctic' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-snowflake"></i></div>
         <p>Arctic</p>
       </div></a
     >
-    <a href="/listings">
+    <a
+      href="/listings/cat/Golfing"
+      class="category-icon <%= category === 'Golfing' ? 'active' : '' %>"
+    >
       <div class="filter">
         <div><i class="fa-solid fa-golf-ball-tee"></i></div>
         <p>Golfing</p>
       </div></a
     >
 
-    <a href="/listings"
+    <a
+      href="/listings/cat/Boats"
+      class="category-icon <%= category === 'Boats' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-sailboat"></i></div>
         <p>Boats</p>
       </div></a
     >
-    <a href="/listings"
+    <a
+      href="/listings/cat/Lakes"
+      class="category-icon <%= category === 'Lakes' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-water"></i></div>
         <p>Lakes</p>
       </div></a
     >
 
-    <a href="/listings"
+    <a
+      href="/listings/cat/Farms"
+      class="category-icon <%= category === 'Farms' ? 'active' : '' %>"
       ><div class="filter">
         <div><i class="fa-solid fa-cow"></i></div>
         <p>Farms</p>
